@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * (Luke Hensley)
+ * (Assignment 6)
+ * (Manages level loading)
+ */
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +12,8 @@ public class GameManager : Singleton<GameManager>
 {
     public int score;
     private string CurrentLevelName = string.Empty;
+
+    public GameObject MainMenu;
 
     public GameObject pauseMenu;
     /*#region This code makes this class a Singleton
@@ -56,6 +63,7 @@ public class GameManager : Singleton<GameManager>
 
     public void UnloadCurrentLevel()
     {
+        MainMenu.SetActive(true);
         AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
         if (ao == null)
         {
